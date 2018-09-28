@@ -17,3 +17,7 @@ Route::get('/', function () {
 
 Route::get('/atividades', 'AtividadeController@index');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
