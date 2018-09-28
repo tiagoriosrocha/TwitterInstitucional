@@ -26,4 +26,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function editors()
+    {
+        return $this->belongsToMany('App\Editor', 'editors_followers', 
+            'editors_id', 'followers_id');
+    }
 }
