@@ -21,3 +21,7 @@ Route::get('/atividades', 'AtividadeController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/editors','EditorController@index');
+Route::get('/seguir/{id}','UserController@seguir');
+Route::get('/pararseguir/{id}','UserController@pararseguir');

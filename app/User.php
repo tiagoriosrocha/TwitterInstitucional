@@ -24,12 +24,18 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'pivot'
     ];
 
     public function editors()
     {
         return $this->belongsToMany('App\Editor', 'editors_followers', 
             'editors_id', 'followers_id');
+    }
+
+    public function messages()
+    {
+        return $this->belongsToMany('App\Message', 'messages_followers', 
+            'message_id', 'follower_id');
     }
 }
