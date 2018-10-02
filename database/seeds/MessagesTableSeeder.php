@@ -16,7 +16,7 @@ class MessagesTableSeeder extends Seeder
     	$faker = Faker\Factory::create();
     	$users = User::all()->pluck('id')->toArray();
 
-        for($i=0; $i<100; $i++){
+        for($i=0; $i<15; $i++){
 	        App\Message::create([
 	            'title' => $faker->sentence($nbWords = 6, $variableNbWords = true),
 	            'description' => $faker->sentence($nbWords = 6, $variableNbWords = true),

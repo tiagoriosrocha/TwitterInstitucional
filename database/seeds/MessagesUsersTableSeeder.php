@@ -13,8 +13,8 @@ class MessagesUsersTableSeeder extends Seeder
     {
         $user = App\User::find(1);
 
-        for($i=1; $i<=10; $i++){
-        	$user->messages()->attach($i);
+        for($i=1; $i<=5; $i++){
+        	$user->messages()->attach($i, array('reading_date' => "2018-10-02 10:00:00"));
         }
     }
 }

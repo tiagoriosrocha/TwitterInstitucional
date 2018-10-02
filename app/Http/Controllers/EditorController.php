@@ -87,4 +87,26 @@ class EditorController extends Controller
     {
         //
     }
+
+    public function seguidores($id)
+    {
+        $editor = Editor::where('id',$id)
+        ->with(['followers'])
+        ->get()
+        ->first();
+
+        return view('editor.showfollowers',compact('editor'));
+    }
+
+    public function mensagens($id)
+    {
+        $editor = Editor::where('id',$id)
+        ->with(['messages','messages.readers'])
+        ->orderBy('created_at', 'desc')
+        ->get()
+        ->first();
+
+        return view('editor.showmessages',compact('editor'));
+    }
+
 }

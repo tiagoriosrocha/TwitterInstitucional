@@ -14,6 +14,6 @@ class Message extends Model
 
 	public function readers(){
 		return $this->belongsToMany('App\User', 'messages_followers', 
-      		'messages_id', 'followers_id');
+      		'message_id', 'follower_id');
 	}
 }

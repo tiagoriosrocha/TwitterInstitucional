@@ -88,14 +88,28 @@ class UserController extends Controller
     public function seguir($editor_id){
         $editor = Editor::find($editor_id);
         $editor->followers()->attach(Auth::id());
-        return redirect('/editors')->with('success', "Seguindo com sucesso o editor $editor->name!!");
+        return redirect('/listareditores')->with('success', "Seguindo com sucesso o editor $editor->name!!");
     }
 
     public function pararseguir($editor_id){
         $editor = Editor::find($editor_id);
         $editor->followers()->detach(Auth::id());
-        return redirect('/editors')->with('success', "Parou de seguir o editor $editor->name!!");
+        return redirect('/listareditores')->with('success', "Parou de seguir o editor $editor->name!!");
     }
+
+    public function vermensagens($id){
+        $user = User::where("id",$id)->with('messages')->get()->first();
+
+        //altera a data de visualização das mensagens
+        foreach($user->messages as $msg){
+            $msg->pivot->reading_date =  \Carbon\Carbon::now('UTC');
+            $msg->pivot->save();
+        }
+
+
+        return view('user.vermensagens',["user" => $user]);
+    }
+
 }
 
 

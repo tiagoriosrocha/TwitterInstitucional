@@ -18,7 +18,7 @@ class CreateMessagesTable extends Migration
             $table->string('title');
             $table->string('description');
             $table->integer('editor_id')->unsigned();
-            $table->dateTime('sent_date');
+            $table->dateTime('sent_date')->nullable($value = true);
             $table->timestamps();
         });
 

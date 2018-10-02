@@ -36,6 +36,7 @@ class User extends Authenticatable
     public function messages()
     {
         return $this->belongsToMany('App\Message', 'messages_followers', 
-            'message_id', 'follower_id');
+            'message_id', 'follower_id')->withPivot('reading_date');
     }
+
 }
